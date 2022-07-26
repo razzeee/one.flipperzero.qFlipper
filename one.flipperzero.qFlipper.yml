@@ -1,0 +1,27 @@
+app-id: one.flipperzero.qFlipper
+runtime: org.kde.Platform
+runtime-version: "5.15-21.08"
+sdk: org.kde.Sdk
+command: qFlipper
+rename-icon: qFlipper
+# rename-desktop-file: qFlipper.desktop
+#
+modules:
+  - shared-modules/libusb/libusb.json
+  - name: qFlipper
+    buildsystem: simple
+    build-commands:
+      - mkdir build && cd build && qmake ../qFlipper.pro PREFIX=/app -spec linux-g++ CONFIG+=qtquickcompiler DEFINES+=DISABLE_APPLICATION_UPDATES && make qmake_all && make && make install
+      - install -Dm644 installer-assets/appimage/qFlipper.desktop /app/share/applications/one.flipperzero.qFlipper.desktop
+    sources:
+      - type: git
+        url: https://github.com/flipperdevices/qFlipper
+        tag: 1.1.0
+        commit: 73c2ac6ac119cfaf5cabbc5c24f7cfc1a3f4b582
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --filesystem=host
+  - --device=all
+  - --share=network
