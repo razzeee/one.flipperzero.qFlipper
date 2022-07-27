@@ -1,5 +1,13 @@
 # qFlipper Flatpak
 
+## First checkout
+
+Make sure to initialize the git submodule:
+
+```
+git submodule update --init --recursive
+```
+
 ## Building
 
 ```
