@@ -4,8 +4,6 @@ runtime-version: "5.15-21.08"
 sdk: org.kde.Sdk
 command: qFlipper
 rename-icon: qFlipper
-# rename-desktop-file: qFlipper.desktop
-#
 modules:
   - shared-modules/libusb/libusb.json
   - name: qFlipper
@@ -22,6 +20,5 @@ finish-args:
   - --share=ipc
   - --socket=x11
   - --socket=wayland
-  - --filesystem=host
   - --device=all
   - --share=network
