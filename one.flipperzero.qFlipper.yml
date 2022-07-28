@@ -9,13 +9,13 @@ modules:
   - name: qFlipper
     buildsystem: simple
     build-commands:
-      - mkdir build && cd build && qmake ../qFlipper.pro PREFIX=/app -spec linux-g++ CONFIG+=qtquickcompiler DEFINES+=DISABLE_APPLICATION_UPDATES && make qmake_all && make && make install
+      - mkdir build && cd build && qmake ../qFlipper.pro PREFIX=${FLATPAK_DEST} -spec linux-g++ CONFIG+=qtquickcompiler DEFINES+=DISABLE_APPLICATION_UPDATES && make qmake_all && make && make install
       - install -Dm644 installer-assets/appimage/qFlipper.desktop /app/share/applications/one.flipperzero.qFlipper.desktop
     sources:
       - type: git
         url: https://github.com/flipperdevices/qFlipper
-        tag: 1.1.0
-        commit: 73c2ac6ac119cfaf5cabbc5c24f7cfc1a3f4b582
+        tag: 1.1.1
+        commit: 9e1b07c9dbe177c3bea0f6464970a2bb660e25bf
 finish-args:
   - --share=ipc
   - --socket=x11
